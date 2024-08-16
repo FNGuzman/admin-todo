@@ -1,7 +1,7 @@
 import React from "react";
 import { CiBellOn, CiChat1, CiMenuBurger, CiSearch } from "react-icons/ci";
 
-const TopMenu = () => {
+export const TopMenu = () => {
     return (
         <>
             <div className="px-6 flex items-center justify-between space-x-4">
@@ -35,4 +35,4 @@ const TopMenu = () => {
     );
 };
 
-export default TopMenu;
+
