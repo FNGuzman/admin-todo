@@ -1,19 +1,24 @@
-'use client'
 
+
+import prisma from "@/app/lib/prisma";
+import { NewTodo, TodosGrid } from "@/todos";
 import { useEffect } from "react";
 
-export default function RestTodosPage() {
-    useEffect(() => {
-        fetch('/api/todos')
-            .then(resp => resp.json())
-            .then(console.log)
+export default async function RestTodosPage() {
 
 
-    }, []);
+    const todos = await prisma.todo.findMany({
+        orderBy: { description: 'asc' }
+    })
+
 
     return (
         <div>
-            <h1>Hello Page RestTodosPage</h1>
+            <div className="w-full px-3 mx-5 mb-5">
+                <NewTodo />
+            </div>
+
+            <TodosGrid todos={todos} />
         </div>
     );
 }
