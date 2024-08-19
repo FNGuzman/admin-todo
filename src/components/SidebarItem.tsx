@@ -1,7 +1,7 @@
-'use_client'
+'use client'
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { CiBookmarkCheck, CiLogout } from 'react-icons/ci';
+
 interface Props {
     icon: React.ReactNode;
     path: string;
@@ -17,9 +17,14 @@ export const SidebarItem = ({ icon, path, title }: Props) => {
                 {/* Active className: text-white bg-gradient-to-r from-sky-600 to-cyan-400 */}
                 <li>
                     <Link
-                        href="/dashboard/rest-todos" className="relative px-4 py-3 flex items-center space-x-4 rounded-xl text-white bg-gradient-to-r from-sky-600 to-cyan-400">
-                        <CiBookmarkCheck size={30} />
-                        <span className="-mr-1 font-medium">Rest - Todos</span>
+                        href={path} className={`
+                        relative px-4 py-3 flex items-center space-x-4 rounded-xl text-gray-600 group
+                        hover:bg-gradient-to-r hover:bg-sky-600 hover:text-white
+                        ${pathName === path ? 'text-white bg-gradient-to-r from-sky-600 to-cyan-400' : ''}
+                        `}>
+                        {/* <CiBookmarkCheck size={30} /> */}
+                        {icon}
+                        <span className="-mr-1 font-medium">{title}</span>
                     </Link>
                 </li>
 

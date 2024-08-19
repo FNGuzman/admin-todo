@@ -1,8 +1,30 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { CiLogout } from 'react-icons/ci';
+import { CiBookmarkCheck, CiLogout } from 'react-icons/ci';
 import { SidebarItem } from './SidebarItem';
+import { IoCalendar } from 'react-icons/io5';
+import path from 'path';
+import { IoIosList } from 'react-icons/io';
 
+const menuItems = [
+    {
+        icon: <IoCalendar />,
+        title: 'Dashboard',
+        path: '/dashboard'
+    },
+
+    {
+        icon: <CiBookmarkCheck />,
+        title: 'Rest-Todos',
+        path: '/dashboard/rest-todos'
+    },
+
+    {
+        icon: <IoIosList />,
+        title: 'Server Actions',
+        path: '/dashboard/server-todos'
+    }
+]
 
 export const Sidebar = () => {
     return (
@@ -38,8 +60,13 @@ export const Sidebar = () => {
                         <h5 className="hidden mt-4 text-xl font-semibold text-gray-600 lg:block">Cynthia J. Watts</h5>
                         <span className="hidden text-gray-400 lg:block">Admin</span>
                     </div>
+                    {menuItems.map(item => (
+                        <SidebarItem
+                            key={item.title}
+                            {...item}
+                        />
+                    ))}
 
-                    <SidebarItem />
                 </div>
 
                 <div className="px-6 -mx-6 pt-4 flex justify-between items-center border-t">
