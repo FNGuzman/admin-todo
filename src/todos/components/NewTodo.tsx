@@ -17,8 +17,8 @@ export const NewTodo = () => {
         route.refresh();
     }
     const deleteCompleted = async () => {
-        const deleteTodosCompleted = await todosApi.deleteCompleteTodo();
-        console.log(deleteTodosCompleted)
+        await todosApi.deleteCompleteTodo();
+
         route.refresh();
     }
     return (
