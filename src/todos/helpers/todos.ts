@@ -31,3 +31,17 @@ export const createTodo = async (description: string): Promise<Todo> => {
     return dbNewTodo;
 
 }
+
+
+export const deleteCompleteTodo = async (): Promise<boolean> => {
+
+
+    const dbDeleteTodo = await fetch(`/api/todos`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(res => res.json());
+    return true;
+
+}
