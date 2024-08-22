@@ -1,9 +1,6 @@
 'use client';
-
 import { startTransition, useOptimistic } from 'react';
-
 import { Todo } from "@prisma/client";
-
 import styles from './TodoItem.module.css';
 import { IoCheckboxOutline, IoSquareOutline } from 'react-icons/io5';
 
@@ -14,7 +11,7 @@ interface Props {
 }
 
 
-export const TodoItem = ({ todo, toggleTodo }: Props) => {
+export const TodosItem = ({ todo, toggleTodo }: Props) => {
 
   const [ todoOptimistic, toggleTodoOptimistic ] = useOptimistic(
     todo,
