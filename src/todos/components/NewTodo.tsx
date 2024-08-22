@@ -3,8 +3,8 @@
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { IoTrashOutline } from "react-icons/io5";
-import * as todosApi from '@/todos/helpers/todos'
-
+// import * as todosApi from '@/todos/helpers/todos'
+import { addTodo, deleteCompleted } from "../actions/todo-actions";
 export const NewTodo = () => {
     const route = useRouter();
     const [description, setDescription] = useState('');
@@ -12,15 +12,13 @@ export const NewTodo = () => {
         e.preventDefault();
         if (description.trim().length === 0) return;
         console.log('form Submit', description)
-        todosApi.createTodo(description);
+        addTodo(description);
         setDescription('')
-        route.refresh();
-    }
-    const deleteCompleted = async () => {
-        await todosApi.deleteCompleteTodo();
 
-        route.refresh();
     }
+    // const deleteCompleted = async () => {
+    //     deleteCompleted();
+    // }
     return (
         <form onSubmit={onSubmit} className='flex w-full'>
             <input type="text"
