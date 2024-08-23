@@ -1,6 +1,7 @@
 'use client'
 
 import { setCookie } from "cookies-next";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 // https://tailwindcomponents.com/component/radio-buttons-1
@@ -11,11 +12,13 @@ interface Props {
     tabOptions?: number[]
 }
 export const TabBar = ({ tabOptions = [1, 2, 3], currentTab = 1 }: Props) => {
+    const route = useRouter();
     const dynamicGridCols = `grid-cols-${tabOptions.length}`;
     const [selected, setSelected] = useState(currentTab);
     const onTabSelected = (tab: number) => {
         setSelected(tab)
         setCookie('selectedTab', tab.toString())
+        route.refresh()
     }
     return (
 
